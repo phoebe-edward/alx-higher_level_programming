@@ -8,7 +8,7 @@ class Square:
         """initialize square:
         Args:
         size(int): the size of the square
-        position(tuple): the position"""
+        position(int, int): the position"""
         self.__size = size
         self.__position = position
 
@@ -49,7 +49,7 @@ class Square:
                 not all(num >= 0 for num in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self.__postion = value
+            self.__position = value
 
     def my_print(self):
         """print square with #"""

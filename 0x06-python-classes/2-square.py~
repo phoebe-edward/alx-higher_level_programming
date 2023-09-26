@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+"""Define Square class."""
+
+
+class Square:
+    """class Square"""
+    def __init__(self, size=0):
+        """initialize square:
+        Args:
+        size(int): the size of the square"""
+        self.__size = size
+        j = 0
+        for i in size:
+            if ((ord(i) == chr('-')) & (j == 0)):
+                raise ValueError("size must be >= 0")
+            elif ((ord(i) <= chr('0')) | (ord(i) >= chr('9'))):
+                raise TypeError("size must be an integer")
+                break
+            j += 1

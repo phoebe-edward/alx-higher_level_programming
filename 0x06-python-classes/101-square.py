@@ -70,7 +70,7 @@ class Square:
     def __str__(self):
         """print a square like my_print"""
         if self.__size == 0:
-            print()
+            pass
         else:
             if self.__position[1] > 0:
                 for m in range(self.__position[1]):

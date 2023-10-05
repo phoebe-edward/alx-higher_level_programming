@@ -1,0 +1,8 @@
+The '''3-say_my_name''' module
+
+Using '''say_my_name''' function
+
+First import it using:
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+then, use it:

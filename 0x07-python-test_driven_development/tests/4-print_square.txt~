@@ -1,0 +1,10 @@
+The '''4-print_square''' module
+
+Using '''print_square''' function
+
+First, import it:
+
+>>> print_square = __import__('4-print_square').print_square
+
+Then, use it:
+

@@ -41,3 +41,13 @@ Traceback (most recent call last):
   File "/alx-higher_level_programming/0x07-python-test_driven_development/2-matrix_divided.py", line 10, in matrix_divided
     raise TypeError("matrix must be a matrix (list of lists) of "
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided(matrix, 1000e1000)
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+>>> matrix_divided(matrix)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> matrix_divided()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

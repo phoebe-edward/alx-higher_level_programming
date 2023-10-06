@@ -1,0 +1,10 @@
+The '''100-matrix_mul''' module
+
+Using '''matrix_mul''' function
+
+First, import it:
+
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Then, use it:
+

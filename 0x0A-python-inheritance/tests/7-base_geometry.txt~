@@ -1,0 +1,8 @@
+The class BaseGeometry
+
+First import it,
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Then, use it:
+

@@ -1,0 +1,8 @@
+The class MyList that inherits from list
+
+Import it first:
+
+>>> MyList = __import__('1-my_list').MyList
+
+Then, use it:
+

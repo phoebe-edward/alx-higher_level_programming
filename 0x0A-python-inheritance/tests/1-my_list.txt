@@ -1,0 +1,25 @@
+The class MyList that inherits from list
+
+Import it first:
+
+>>> MyList = __import__('1-my_list').MyList
+
+Then, use it:
+
+>>> mylist = MyList()
+>>> print(mylist)
+[]
+>>> mylist.append(1)
+>>> mylist.append(4)
+>>> mylist.append(2)
+>>> mylist.append(3)
+>>> mylist.append(5)
+>>> print(mylist)
+[1, 4, 2, 3, 5]
+>>> mylist.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(mylist)
+[1, 4, 2, 3, 5]
+>>> mylist2 = MyList()
+>>> mylist2.print_sorted()
+[]

@@ -4,5 +4,7 @@
 
 import json
 
+
 def class_to_json(obj):
+    """obj to dict"""
     return obj.__dict__

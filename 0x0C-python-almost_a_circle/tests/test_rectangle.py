@@ -3,6 +3,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+import io
+import sys
 
 
 class test_rectangle(unittest.TestCase):
@@ -46,3 +48,19 @@ class test_rectangle(unittest.TestCase):
     def test_area(self):
         r1 = Rectangle(2, 3)
         self.assertEqual(r1.area(), 2 * 3)
+
+    @staticmethod
+    def capture_stdout(rect, method):
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_display(self):
+        r1 = Rectangle(2, 3)
+        capture = test_rectangle.capture_stdout(r1, "display")
+        self.assertEqual("##\n##\n##\n", capture.getvalue())

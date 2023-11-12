@@ -64,3 +64,13 @@ class test_rectangle(unittest.TestCase):
         r1 = Rectangle(2, 3)
         capture = test_rectangle.capture_stdout(r1, "display")
         self.assertEqual("##\n##\n##\n", capture.getvalue())
+
+    def test_str(self):
+        r1 = Rectangle(2, 3, 1, 0, 5)
+        self.assertEqual("[Rectangle] (5) 1/0 - 2/3", r1.__str__())
+        capture = test_rectangle.capture_stdout(r1, "print")
+        self.assertEqual("[Rectangle] (5) 1/0 - 2/3\n", capture.getvalue())
+        r2 = Rectangle(4, 5)
+        capture = test_rectangle.capture_stdout(r2, "print")
+        self.assertEqual("[Rectangle] ({}) 0/0 - 4/5\n".format(r2.id),
+                         capture.getvalue())

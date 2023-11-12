@@ -64,6 +64,9 @@ class test_rectangle(unittest.TestCase):
         r1 = Rectangle(2, 3)
         capture = test_rectangle.capture_stdout(r1, "display")
         self.assertEqual("##\n##\n##\n", capture.getvalue())
+        r2 = Rectangle(2, 3, 1, 2)
+        capture = test_rectangle.capture_stdout(r2, "display")
+        self.assertEqual("\n\n ##\n ##\n ##\n", capture.getvalue())
 
     def test_str(self):
         r1 = Rectangle(2, 3, 1, 0, 5)

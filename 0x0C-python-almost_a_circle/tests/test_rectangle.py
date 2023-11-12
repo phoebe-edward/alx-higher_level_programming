@@ -42,3 +42,7 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(r.y, 4)
         r.width = 5
         self.assertEqual(r.width, 5)
+
+    def test_area(self):
+        r1 = Rectangle(2, 3)
+        self.assertEqual(r1.area(), 2 * 3)

@@ -98,3 +98,20 @@ class test_rectangle(unittest.TestCase):
             r1.update(12, "string width", "string height")
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r1.update(12, 4, "string height", "string x")
+        r2 = Rectangle(10, 10, 10, 10, 10)
+        r2.update(id=1)
+        self.assertEqual("[Rectangle] (1) 10/10 - 10/10", str(r2))
+        r2.update(width=2)
+        self.assertEqual("[Rectangle] (1) 10/10 - 2/10", str(r2))
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r2.update(width=-3)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r2.update(height="string height")
+        r2.update(height=4, width=3, id=12, y=2, x=1)
+        self.assertEqual("[Rectangle] (12) 1/2 - 3/4", str(r2))
+        r2.update(id=None)
+        ref = "[Rectangle] ({}) 1/2 - 3/4".format(r2.id)
+        self.assertEqual(ref, str(r2))
+        r3 = Rectangle(10, 10, 10, 10, 10)
+        r3.update(12, 3, height=4, x=6)
+        self.assertEqual("[Rectangle] (12) 10/10 - 3/10", str(r3))

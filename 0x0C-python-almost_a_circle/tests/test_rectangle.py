@@ -77,3 +77,24 @@ class test_rectangle(unittest.TestCase):
         capture = test_rectangle.capture_stdout(r2, "print")
         self.assertEqual("[Rectangle] ({}) 0/0 - 4/5\n".format(r2.id),
                          capture.getvalue())
+
+    def test_update(self):
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(12, 4, 5, 6, 7)
+        self.assertEqual(r1.width, 4)
+        self.assertEqual("[Rectangle] (12) 6/7 - 4/5", str(r1))
+        r1.update()
+        self.assertEqual("[Rectangle] (12) 6/7 - 4/5", str(r1))
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r1.update(12, -4)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r1.update(12, "string width")
+        r1.update(None, 4, 5, 2)
+        ref = "[Rectangle] ({}) 2/7 - 4/5".format(r1.id)
+        self.assertEqual(ref, str(r1))
+        r1.update(12, 3)
+        self.assertEqual("[Rectangle] (12) 2/7 - 3/5", str(r1))
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r1.update(12, "string width", "string height")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r1.update(12, 4, "string height", "string x")

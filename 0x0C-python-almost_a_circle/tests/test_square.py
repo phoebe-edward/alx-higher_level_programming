@@ -16,7 +16,7 @@ class test_square(unittest.TestCase):
         s3 = Square(5, 3, 4, 12)
         self.assertEqual("[Square] (12) 3/4 - 5", str(s3))
         s3.update(s3.id, 7, 7)
-        self.assertEqual("[Square] (12) 3/4 - 7", str(s3))
+        self.assertEqual("[Square] (12) 7/4 - 7", str(s3))
 
     def test_square_size(self):
         s4 = Square(5)

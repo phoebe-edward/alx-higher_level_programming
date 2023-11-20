@@ -46,3 +46,12 @@ class Square(Rectangle):
                     self.x = v
                 elif k == "y":
                     self.y = v
+
+    def to_dictionary(self):
+        """convert square to dictionary"""
+        dic = {}
+        dic["x"] = self.x
+        dic["y"] = self.y
+        dic["size"] = self.size
+        dic["id"] = self.id
+        return dic

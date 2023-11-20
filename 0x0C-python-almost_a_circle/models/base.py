@@ -45,3 +45,14 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """create a square or rectangle with attributes given in dictionary"""
+        if dictionary is not None and len(dictionary) != 0:
+            if cls.__name__ == "Rectangle":
+                obj = cls(1, 1)
+            else:
+                obj = cls(1)
+            obj.update(**dictionary)
+            return obj

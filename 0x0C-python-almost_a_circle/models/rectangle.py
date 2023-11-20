@@ -112,3 +112,12 @@ class Rectangle(Base):
                     self.x = v
                 elif k == "y":
                     self.y = v
+
+    def to_dictionary(self):
+        dic = {}
+        dic["x"] = self.x
+        dic["y"] = self.y
+        dic["id"] = self.id
+        dic["width"] = self.width
+        dic["height"] = self.height
+        return dic

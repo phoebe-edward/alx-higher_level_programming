@@ -114,6 +114,7 @@ class Rectangle(Base):
                     self.y = v
 
     def to_dictionary(self):
+        """convert a rectangle to a dictionary format"""
         dic = {}
         dic["x"] = self.x
         dic["y"] = self.y

@@ -11,18 +11,18 @@ class test_rectangle(unittest.TestCase):
     """class test_rectangle"""
 
     def test_error(self):
-        self.assertRaises(TypeError, Rectangle, 'srt1', 'str2')
+        self.assertRaises(TypeError, Rectangle, 'srt1', 2)
         self.assertRaises(TypeError, Rectangle, 1, 'str2')
         self.assertRaises(TypeError, Rectangle, [1, 2], [3, 4])
         self.assertRaises(TypeError, Rectangle)
         self.assertRaises(TypeError, Rectangle, 1)
-        self.assertRaises(ValueError, Rectangle, -2, -3)
+        self.assertRaises(ValueError, Rectangle, -2, 3)
         self.assertRaises(ValueError, Rectangle, 1, -3)
-        self.assertRaises(ValueError, Rectangle, 0, 0)
+        self.assertRaises(ValueError, Rectangle, 0, 2)
         self.assertRaises(ValueError, Rectangle, 1, 0)
-        self.assertRaises(ValueError, Rectangle, 1, 2, -3, -4)
+        self.assertRaises(ValueError, Rectangle, 1, 2, -3, 4)
         self.assertRaises(ValueError, Rectangle, 1, 2, 3, -4)
-        self.assertRaises(TypeError, Rectangle, 1, 2, 'x', 'y')
+        self.assertRaises(TypeError, Rectangle, 1, 2, 'x', 4)
         self.assertRaises(TypeError, Rectangle, 1, 2, 3, 'y')
         self.assertRaises(TypeError, Rectangle, 1, 2, [1, 2], [3, 4])
         r1 = Rectangle(1, 2)

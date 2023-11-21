@@ -12,13 +12,18 @@ class test_rectangle(unittest.TestCase):
 
     def test_error(self):
         self.assertRaises(TypeError, Rectangle, 'srt1', 'str2')
+        self.assertRaises(TypeError, Rectangle, 1, 'str2')
         self.assertRaises(TypeError, Rectangle, [1, 2], [3, 4])
         self.assertRaises(TypeError, Rectangle)
         self.assertRaises(TypeError, Rectangle, 1)
         self.assertRaises(ValueError, Rectangle, -2, -3)
+        self.assertRaises(ValueError, Rectangle, 1, -3)
         self.assertRaises(ValueError, Rectangle, 0, 0)
+        self.assertRaises(ValueError, Rectangle, 1, 0)
         self.assertRaises(ValueError, Rectangle, 1, 2, -3, -4)
+        self.assertRaises(ValueError, Rectangle, 1, 2, 3, -4)
         self.assertRaises(TypeError, Rectangle, 1, 2, 'x', 'y')
+        self.assertRaises(TypeError, Rectangle, 1, 2, 3, 'y')
         self.assertRaises(TypeError, Rectangle, 1, 2, [1, 2], [3, 4])
         r1 = Rectangle(1, 2)
         with self.assertRaises(AttributeError):
@@ -26,6 +31,14 @@ class test_rectangle(unittest.TestCase):
             print(r1.__x)
             print(r1.__width)
             print(r1.__height)
+        r2 = Rectangle(1, 2)
+        self.assertEqual("[Rectangle] ({}) 0/0 - 1/2".format(r2.id), str(r2))
+        r2 = Rectangle(1, 2, 3)
+        self.assertEqual("[Rectangle] ({}) 3/0 - 1/2".format(r2.id), str(r2))
+        r2 = Rectangle(1, 2, 3, 4)
+        self.assertEqual("[Rectangle] ({}) 3/4 - 1/2".format(r2.id), str(r2))
+        r2 = Rectangle(1, 2, 3, 4, 12)
+        self.assertEqual("[Rectangle] (12) 3/4 - 1/2", str(r2))
 
     def test_inheritance(self):
         self.assertIsInstance(Rectangle(1, 2), Base)
@@ -64,6 +77,9 @@ class test_rectangle(unittest.TestCase):
         r1 = Rectangle(2, 3)
         capture = test_rectangle.capture_stdout(r1, "display")
         self.assertEqual("##\n##\n##\n", capture.getvalue())
+        r11 = Rectangle(2, 3, 1)
+        capture = test_rectangle.capture_stdout(r11, "display")
+        self.assertEqual(" ##\n ##\n ##\n", capture.getvalue())
         r2 = Rectangle(2, 3, 1, 2)
         capture = test_rectangle.capture_stdout(r2, "display")
         self.assertEqual("\n\n ##\n ##\n ##\n", capture.getvalue())
@@ -120,7 +136,8 @@ class test_rectangle(unittest.TestCase):
         r4 = Rectangle(1, 2, 3, 4, 12)
         dic4 = r4.to_dictionary()
         self.assertIsInstance(dic4, dict)
-        self.assertDictEqual({'x': 3, 'y': 4, 'id': 12, 'height': 2, 'width': 1}, dic4)
+        self.assertDictEqual(
+            {'x': 3, 'y': 4, 'id': 12, 'height': 2, 'width': 1}, dic4)
         self.assertEqual(dic4["x"], 3)
         self.assertEqual(dic4["y"], 4)
         self.assertEqual(dic4["width"], 1)
@@ -133,3 +150,7 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(dic5["width"], 6)
         self.assertEqual(dic5["height"], 7)
         self.assertEqual(dic5["id"], r5.id)
+
+
+if __name__ == "__main__":
+    unittest.main()
